@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+service Inventario {
+    rpc CrearProducto (Producto) returns (Respuesta);
+    rpc ObtenerProducto (IdProducto) returns (Producto);
+    rpc ActualizarProducto (Producto) returns (Respuesta);
+    rpc EliminarProducto (IdProducto) returns (Respuesta);
+    rpc ListarProductos (Vacio) returns (ListaProductos);
+}
+
+message Producto {
+    string id = 1;
+    string nombre = 2;
+    string descripcion = 3;
+    int32 cantidad = 4;
+    double precio = 5;
+}
+
+message IdProducto {
+    string id = 1;
+}
+
+message Respuesta {
+    string mensaje = 1;
+}
+
+message Vacio {}
+
+message ListaProductos {
+    repeated Producto productos = 1;
+}
